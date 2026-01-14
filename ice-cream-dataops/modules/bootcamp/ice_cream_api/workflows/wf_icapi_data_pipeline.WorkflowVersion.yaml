@@ -22,8 +22,8 @@ workflowDefinition:
     parameters:
       function:
         externalId: icapi_datapoints_extractor
-        data: { "hours": 1 }
-    retries: 3
+        data: { "sites": ["Sao_Paulo", "Oslo", "Hannover"], backfill: True, hours: 1}
+        retries: 3
     timeout: 3600
     onFailure: abortWorkflow
     dependsOn:
@@ -34,7 +34,7 @@ workflowDefinition:
     parameters:
       function:
         externalId: oee_timeseries
-        data: { "hours": 1 }
+        data: {"sites": ["Sao_Paulo", "Oslo", "Hannover"], "lookback_minutes": 10160}
     retries: 3
     timeout: 3600
     onFailure: abortWorkflow
